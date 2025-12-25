@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -18,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 // 🔑 THIS LINE IS REQUIRED
-app.use("/api/users", userRoutes);
+// app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
