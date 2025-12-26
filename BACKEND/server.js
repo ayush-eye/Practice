@@ -11,11 +11,6 @@ app.get("/", (req, res) => {
   res.send("App Running 🚀");
 });
 
-app.get("/api", (req, res) => {
-  res.send("API Running 🚀");
-});
-
-
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
