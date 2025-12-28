@@ -1,20 +1,18 @@
 import dotenv from "dotenv";
 dotenv.config({ path: "../.env"});
 
-import express from "express";
 import connectDb from "./db/index.js";
+import { app } from "./app.js";
 
-connectDb();
-
-const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("App Running 🚀");
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+connectDb()
+.then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}) 
+.catch((err) => {
+  console.log(`Connection failed, ${err}`);
+  process.exit(1);
 });
